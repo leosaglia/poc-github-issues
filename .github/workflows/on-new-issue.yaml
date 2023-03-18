@@ -1,15 +1,18 @@
 on:
   issues:
     types:
-      - opened
+      - closed
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - run: |
-        > generated.txt
-        git add .
-        git commit -m "generated"
-        git push
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Generate file
+        run: |
+          > generated.txt
+          git add .
+          git commit -m "generated"
+          git push
