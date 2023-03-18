@@ -8,7 +8,7 @@ body:
       value: |
         Formulário para facilitar a vida de testes
   - type: input
-    id: abrangência
+    id: abrangencia
     attributes:
       label: Informe quais testes deseja executar
       description: Qual a abrangência dos testes, quais peças ele irá testar
@@ -31,5 +31,3 @@ body:
         - Dev e Hom
         - Dev
         - Hom
-      validations:
-        required: true
