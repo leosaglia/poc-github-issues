@@ -1,0 +1,35 @@
+name: Testes TaaC
+description: Automatizador de testes para o TaaC
+title: "[Testes TaaC]: "
+labels: ["TaaC", "automatizacao"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Formulário para facilitar a vida de testes
+  - type: input
+    id: abrangência
+    attributes:
+      label: Informe quais testes deseja executar
+      description: Qual a abrangência dos testes, quais peças ele irá testar
+      placeholder: ex. lambda abertura
+    validations:
+      required: true
+  - type: textarea
+    id: more-information
+    attributes:
+      label: Informações adicionais
+      description: Informações complementares para explicar o contexto e o motivo do teste
+      placeholder: 
+    validations:
+      required: false
+  - type: dropdown
+    id: environment
+    attributes:
+      label: Em quais ambientes irá rodar
+      options:
+        - Dev e Hom
+        - Dev
+        - Hom
+      validations:
+        required: true
