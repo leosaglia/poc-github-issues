@@ -13,6 +13,8 @@ jobs:
       - name: Generate file
         run: |
           > generated.txt
+          git config --global user.email "leosaglia@hotmail.com"
+          git config --global user.name "Leo Saglia"
           git add .
           git commit -m "generated"
           git push
