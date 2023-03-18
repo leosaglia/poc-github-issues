@@ -12,7 +12,7 @@ jobs:
 
       - name: Generate file
         env:
-          ACCESS_TOKEN:  ${{ secrets.GITHUB_TOKEN }}
+          ACCESS_TOKEN:  ${{ secrets.SECRET_ACTIONS }}
         run: |
           > generated.txt
           git config --global user.email "leosaglia@hotmail.com"
