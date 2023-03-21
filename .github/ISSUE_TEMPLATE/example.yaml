@@ -1,5 +1,5 @@
 name: "[TaaC] - Formulário para execução de testes no TaaC"
-description: Pedidos de execução de testes no TaaC
+description: "Pedidos de execução de testes no TaaC"
 title: "Formulário para execução de testes no TaaC "
 labels: ["TaaC", "automatizacao", "testes"]
 assignees:
