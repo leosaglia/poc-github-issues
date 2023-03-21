@@ -1,10 +1,10 @@
 on:
   issues:
-    types:
-      - opened
+    types: [opened, reopened]
 
 jobs:
-  build:
+  form-to-json:
+    name: Convert Form Issue to JSON
     runs-on: ubuntu-latest
     steps:
       - name: Run Issue form parser
@@ -15,8 +15,29 @@ jobs:
           separator: '###'
           label_marker_start: '>>'
           label_marker_end: '<<'
-
-      - name: Show parsed data JSON
+          
+      - name: Set output
+        id: payload
+        run: echo ::set-output name=json_var::'${{ steps.parse.outputs.payload }}'
+        
+  atualizar-arquivo:
+    name: Update File    
+    runs-on: ubuntu-latest       
+    needs: [form-to-json]
+    steps:
+      - name: Mostrar valores
         run: |
           echo "${{ steps.parse.outputs.payload }}"
-          echo ${{ fromJSON(steps.parse.outputs.payload.["Abrangencia dos testes"]) }}
+          echo ${{ fromJSON(steps.parse.outputs.payload)['Abrangencia dos testes'] }}
+    
+  auto-closing-issue:
+    name: Auto Closing Issue
+    runs-on: ubuntu-latest
+    needs: [atualizar-arquivo]
+    steps:
+      - name: Close Issue
+        id: parse
+        uses: peter-evans/close-issue@v1
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          comment: Fechando issue automaticamente
