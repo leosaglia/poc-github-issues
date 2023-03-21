@@ -6,6 +6,8 @@ jobs:
   form-to-json:
     name: Convert Form Issue to JSON
     runs-on: ubuntu-latest
+    outputs:
+      payload-parsed: ${{ steps.payload.outputs.json_var }}
     steps:
       - name: Run Issue form parser
         id: parse
