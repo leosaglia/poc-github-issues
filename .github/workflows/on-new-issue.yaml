@@ -6,8 +6,6 @@ jobs:
   form-to-json:
     name: Convert Form Issue to JSON
     runs-on: ubuntu-latest
-    outputs:
-      payload-parsed: ${{ steps.payload.outputs.json_var }}
     steps:
       - name: Run Issue form parser
         id: parse
@@ -18,24 +16,15 @@ jobs:
           label_marker_start: '>>'
           label_marker_end: '<<'
           
-      - name: Set output
-        id: payload
-        run: echo ::set-output name=json_var::'${{ steps.parse.outputs.payload }}'
-        
-  atualizar-arquivo:
-    name: Update File    
-    runs-on: ubuntu-latest       
-    needs: [form-to-json]
-    steps:
-      - name: Mostrar valores
+      - name: Show parsed data JSON
         run: |
           echo "${{ steps.parse.outputs.payload }}"
-          echo ${{ fromJSON(steps.parse.outputs.payload)['Abrangencia dos testes'] }}
+          echo "${{ fromJson(steps.parse.outputs.payload)['Abrangencia dos testes'] }}"
     
   auto-closing-issue:
     name: Auto Closing Issue
     runs-on: ubuntu-latest
-    needs: [atualizar-arquivo]
+    needs: [form-to-json]
     steps:
       - name: Close Issue
         id: parse
