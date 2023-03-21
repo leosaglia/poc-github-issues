@@ -1,7 +1,7 @@
 on:
   issues:
     types:
-      - closed
+      - opened
 
 jobs:
   build:
@@ -9,19 +9,7 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
-
-      - name: Generate file
-        env:
-          ACCESS_TOKEN:  ${{ secrets.SECRET_ACTIONS }}
-        run: |
-          > generated.txt
-          echo ${{ github.event.issue.number }}
-          echo ${{ github.event.issue.body_html }}
-          echo ${{ github.event.issue.body_text }}
-          echo ${{ github.event.issue.created_at }}
-          echo ${{ github.event.issue.labels }}
-          git config --global user.email "leosaglia@hotmail.com"
-          git config --global user.name "Leo Saglia"
-          git add .
-          git commit -m "generated"
-          git push
+      
+      - name: Convert Form Issu to JSON
+        run : |
+          echo ${{ steps.payload.outputs.json_var }}
