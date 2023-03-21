@@ -16,9 +16,10 @@ jobs:
         run: |
           > generated.txt
           echo ${{ github.event.issue.number }}
-          echo ${{ github.event.issue.body }}
-          echo ${{ github.event.issue.body.abrangencia }}
-          echo ${{ github.event.issue.labels[0] }}
+          echo ${{ github.event.issue.body_html }}
+          echo ${{ github.event.issue.body_text }}
+          echo ${{ github.event.issue.created_at }}
+          echo ${{ github.event.issue.labels }}
           git config --global user.email "leosaglia@hotmail.com"
           git config --global user.name "Leo Saglia"
           git add .
