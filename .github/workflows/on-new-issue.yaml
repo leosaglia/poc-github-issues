@@ -19,4 +19,4 @@ jobs:
       - name: Show parsed data JSON
         run: |
           echo "${{ steps.parse.outputs.payload }}"
-          echo ${{ fromJSON(steps.parse.outputs.payload.abrangencia) }}
+          echo ${{ fromJSON(steps.parse.outputs.payload.["Abrangencia dos testes"]) }}
