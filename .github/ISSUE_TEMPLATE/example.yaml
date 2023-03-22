@@ -11,11 +11,11 @@ body:
         Formulário para facilitar a execução dos testes no TaaC
         
   - type: input
-    id: abrangencia
+    id: marks
     attributes:
-      label: ">>Abrangencia dos testes<<"
-      description: Qual a abrangência dos testes? / quais peças ele irá testar?
-      placeholder: ex. lambda abertura
+      label: ">>Marks<<"
+      description: Qual os marks que serão executados?
+      placeholder: ex. lambda
     validations:
       required: true
       
@@ -33,6 +33,5 @@ body:
     attributes:
       label: ">>Ambiente execucao<<"
       options:
-        - dev_hom
-        - dev
-        - hom
+        - DEV
+        - HOM

@@ -1,6 +1,17 @@
-execucao:
-  texto: Uma noite
-  mensagem: Uma nova mensagem
-execucao:
-  texto: Uma noite
-  mensagem: lambda2
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.8
+    commands: commands
+  build:
+    commands:
+      - echo "Executando os testes no ambiente de DEV"
+      - cd tests/integrations
+      - python -m pytest -M "analise" -E dev --junitxml=relatorio.xml || true
+
+  artifacts:
+    base-directory: base
+    files:
+      - 'file.xml'
