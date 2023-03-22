@@ -31,7 +31,7 @@ jobs:
           git config --global user.email "leosaglia@hotmail.com"
           git config --global user.name "Leo Saglia"
           git add .
-          git commit -m "generated"
+          git commit -m "[${{ fromJson(steps.parse.outputs.payload)['Ambiente execucao'] }}]"
           git push               
     
   auto-closing-issue:
