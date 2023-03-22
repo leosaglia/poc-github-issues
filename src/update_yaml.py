@@ -11,10 +11,10 @@ def read_and_modify_one_block_of_yaml_data():
 
     yaml_data = None
 
-    with open(f'teste.yaml', 'r') as f:
+    with open(f'tests/teste.yaml', 'r') as f:
         yaml_data = yaml.safe_load(f)
 
-    with open(f'teste.yaml', 'w') as f:
+    with open(f'tests/teste.yaml', 'w') as f:
         yaml_data["phases"]["build"]["commands"][-1] = novo_comando 
         yaml.dump(yaml_data,f,sort_keys=False)
 
