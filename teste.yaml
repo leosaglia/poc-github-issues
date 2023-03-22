@@ -1,18 +1,14 @@
 version: 0.2
-
 phases:
   install:
     runtime-versions:
       python: 3.8
     commands: commands
   build:
-    commands:
-      - echo "Executando os testes no ambiente de DEV"
-      - cd tests/integrations
-      - python -m pytest -M "analise" -E dev --junitxml=relatorio.xml || true
-
+    commands: "        \n      - echo \"Executando os testes no ambiente de DEV\"\n\
+      \      - cd tests/integrations\n      - python -m pytest -M \"{marks}\" -E {ambiente.lower()}\
+      \ --junitxml=relatorio.xml || true\n    "
   artifacts:
     base-directory: base
     files:
-      - 'file.xml'
-      
+    - file.xml
