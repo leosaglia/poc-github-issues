@@ -7,11 +7,7 @@ def read_and_modify_one_block_of_yaml_data():
     marks = os.environ.get("INPUT_MARKS")
     ambiente = os.environ.get("INPUT_AMBIENTE")
 
-    novo_comando = f'''        
-      - echo "Executando os testes no ambiente de DEV"
-      - cd tests/integrations
-      - python -m pytest -M "{marks}" -E {ambiente.lower()} --junitxml=relatorio.xml || true
-    '''
+    novo_comando = f'python -m pytest -M "{marks}" -E {ambiente.lower()} --junitxml=relatorio.xml || true'
 
     yaml_data = None
 
@@ -19,7 +15,7 @@ def read_and_modify_one_block_of_yaml_data():
         yaml_data = yaml.safe_load(f)
 
     with open(f'teste.yaml', 'w') as f:
-        yaml_data["phases"]["build"]["commands"] = novo_comando 
+        yaml_data["phases"]["build"]["commands"][-1] = novo_comando 
         yaml.dump(yaml_data,f,sort_keys=False)
 
 read_and_modify_one_block_of_yaml_data()
