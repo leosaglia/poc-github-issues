@@ -27,6 +27,8 @@ jobs:
           value: Uma nova mensagem
           commitChange: true
           message: Novo commit
+          branch: main
+          targetBranch: main
           
       - name: Show parsed data JSON
         run: |
