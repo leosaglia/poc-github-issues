@@ -6,9 +6,9 @@ phases:
     commands: commands
   build:
     commands:
-      - echo "Executando os testes no ambiente de DEV"
-      - cd tests/integrations      
-      - python -m pytest -M -E hom --junitxml=relatorio.xml || true
+    - echo "Executando os testes no ambiente de DEV"
+    - cd tests/integrations
+    - python -m pytest -M "lambdaaa" -E dev --junitxml=relatorio.xml || true
   artifacts:
     base-directory: base
     files:
