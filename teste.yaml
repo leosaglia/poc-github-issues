@@ -6,8 +6,8 @@ phases:
     commands: commands
   build:
     commands: "        \n      - echo \"Executando os testes no ambiente de DEV\"\n\
-      \      - cd tests/integrations\n      - python -m pytest -M \"{marks}\" -E {ambiente.lower()}\
-      \ --junitxml=relatorio.xml || true\n    "
+      \      - cd tests/integrations\n      - python -m pytest -M \"\" -E hom --junitxml=relatorio.xml\
+      \ || true\n    "
   artifacts:
     base-directory: base
     files:
