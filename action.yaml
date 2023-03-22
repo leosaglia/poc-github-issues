@@ -1,4 +1,4 @@
-name: 'Atualizar arquivo yaml'
+name: 'Update Yaml'
 description: 'Atualizar tag commands do arquivo yaml'
 inputs:
   marks:
