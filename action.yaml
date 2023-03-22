@@ -23,6 +23,7 @@ runs:
     - name: Pass Inputs to Shell
       run: |
               echo "INPUT_MARKS=${{ inputs.marks }}" >> $GITHUB_ENV
+      shell: bash
       
     - name: Install Dependencies
       id: update-yaml
