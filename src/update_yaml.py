@@ -7,7 +7,7 @@ def read_and_modify_one_block_of_yaml_data():
     marks = os.environ.get("INPUT_MARKS")
     ambiente = os.environ.get("INPUT_AMBIENTE")
 
-    novo_comando = f'python -m pytest -M "{marks}" -E {ambiente.lower()} --junitxml=relatorio.xml || true'
+    novo_comando = 'python -m pytest -M "{0}" -E {1} --junitxml=relatorio.xml || true'.format(marks, ambiente.lower())
 
     yaml_data = None
 
