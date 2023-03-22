@@ -1,0 +1,31 @@
+name: 'Atualizar arquivo yaml'
+description: 'Atualizar tag commands do arquivo yaml'
+inputs:
+  marks:
+    description: 'Insira as marks que serão executadas'
+    required: true
+    default: "lambda"
+  ambiente:
+    description: 'Insira as marks que serão executadas'
+    required: true
+    default: "DEV"
+runs:
+  using: 'composite'
+  steps:
+    - name: Install Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'  
+    - name: Install Dependencies
+      run: pip install -r requirements.txt
+      shell: bash
+
+    - name: Pass Inputs to Shell
+      run: |
+              echo "INPUT_MARKS=${{ inputs.marks }}" >> $GITHUB_ENV
+      
+    - name: Install Dependencies
+      id: update-yaml
+      run: |
+        python src/update_yaml.py
+      shell: bash

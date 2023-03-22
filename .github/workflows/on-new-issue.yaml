@@ -21,7 +21,7 @@ jobs:
 
       - name: Update yaml
         id: update-yaml
-        uses: ./.github/actions/update_yaml.yaml
+        uses: .
         with:
           marks: lambda2
           ambiente: HOM
