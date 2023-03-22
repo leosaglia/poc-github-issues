@@ -27,12 +27,15 @@ jobs:
           ambiente: ${{ fromJson(steps.parse.outputs.payload)['Ambiente execucao'] }}
 
       - name: Atualizar repo
+        env:
+          Ambiente_Execucao: ${{ fromJson(steps.parse.outputs.payload)['Ambiente execucao'] }}
         run: |
           git config --global user.email "leosaglia@hotmail.com"
           git config --global user.name "Leo Saglia"
           git add .
-          git commit -m "[${{ fromJson(steps.parse.outputs.payload)['Ambiente execucao'] }}]"
-          git push               
+          git commit -m "[$Ambiente_Execucao]"
+          git checkout -b test_$Ambiente_Execucao
+          git push --set-upstream origin test_$Ambiente_Execucao
     
   auto-closing-issue:
     name: Auto Closing Issue
