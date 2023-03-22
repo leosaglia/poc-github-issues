@@ -19,17 +19,21 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
       
-      - name: Update yaml
-        uses: fjogeleit/yaml-update-action@main
+      - name: Install Python
+        uses: actions/setup-python@v4
         with:
-          valueFile: 'teste.yaml'
-          propertyPath: 'execucao.mensagem'
-          value: Uma nova mensagem
-          commitChange: true
-          message: Novo commit
-          branch: main
-          targetBranch: main
-          
+          python-version: '3.10'
+        
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt
+          python src/update_yaml.py
+          git config --global user.email "leosaglia@hotmail.com"
+          git config --global user.name "Leo Saglia"
+          git add .
+          git commit -m "generated"
+          git push
+               
       - name: Show parsed data JSON
         run: |
           echo "${{ steps.parse.outputs.payload }}"
