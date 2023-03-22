@@ -16,6 +16,9 @@ jobs:
           label_marker_start: '>>'
           label_marker_end: '<<'
 
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
       - name: Update yaml
         id: update-yaml
         uses: ./
