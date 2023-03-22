@@ -13,11 +13,13 @@ def read_and_modify_one_block_of_yaml_data():
       - python -m pytest -M "{marks}" -E {ambiente.lower()} --junitxml=relatorio.xml || true
     '''
 
-    with open(f'teste.yaml', 'r+') as f:
-        data = yaml.safe_load(f)
-        data["phases"]["build"]["commands"] = novo_comando 
-        yaml.dump(data,f,sort_keys=False)
-        print(data) 
-    print('done!')
+    yaml_data = None
+
+    with open(f'teste.yaml', 'r') as f:
+        yaml_data = yaml.safe_load(f)
+
+    with open(f'teste.yaml', 'w') as f:
+        yaml_data["phases"]["build"]["commands"] = novo_comando 
+        yaml.dump(yaml_data,f,sort_keys=False)
 
 read_and_modify_one_block_of_yaml_data()
