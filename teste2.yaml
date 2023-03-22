@@ -1,0 +1,4 @@
+execucao:
+  texto: Uma noite
+  mensagem: Uma nova mensagem
+execucao["mensagem"]: message
