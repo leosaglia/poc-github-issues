@@ -12,9 +12,6 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: Checkout repo
-      uses: actions/checkout@v3
-
     - name: Install Python
       uses: actions/setup-python@v4
       with:
@@ -31,5 +28,6 @@ runs:
     - name: Install Dependencies
       id: update-yaml
       run: |
+        ls
         python src/update_yaml.py
       shell: bash
