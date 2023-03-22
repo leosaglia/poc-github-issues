@@ -9,3 +9,5 @@ def read_and_modify_one_block_of_yaml_data(filename='teste', key='execucao.mensa
         data[f'{key}'] = f'{value}' 
         print(data) 
     print('done!')
+
+read_and_modify_one_block_of_yaml_data()
