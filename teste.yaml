@@ -1,4 +1,3 @@
 execucao:
   texto: Uma noite
-  mensagem: |
-    Uma mensagem a ser substituida
+  mensagem: Uma nova mensagem
