@@ -1,3 +1,6 @@
 execucao:
   texto: Uma noite
   mensagem: Uma nova mensagem
+execucao:
+  texto: Uma noite
+  mensagem: lambda2
