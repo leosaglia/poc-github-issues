@@ -7,7 +7,7 @@ phases:
     commands:
     - echo "Executando os testes no ambiente de DEV"
     - cd tests/integrations
-    - python -m pytest -M "lambdaaa" -E dev --junitxml=relatorio.xml || true
+    - python -m pytest -M "Encargos" -E hom --junitxml=relatorio.xml || true
   install:
     commands: commands
     runtime-versions:
