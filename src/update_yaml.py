@@ -16,6 +16,6 @@ def read_and_modify_one_block_of_yaml_data():
 
     with open(f'tests/teste.yaml', 'w') as file:
         yaml_data["phases"]["build"]["commands"][-1] = novo_comando 
-        yaml.safe_dump(yaml_data,file)
+        yaml.dump(yaml_data,file, sort_keys=False)
 
 read_and_modify_one_block_of_yaml_data()
