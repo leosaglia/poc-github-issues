@@ -6,6 +6,8 @@ jobs:
   form-to-json:
     name: Convert Form Issue to JSON
     runs-on: ubuntu-latest
+    outputs:
+      ambiente_exec: ${{ steps.environ.outputs.ambiente_exec }}
     steps:
       - name: Run Issue form parser
         id: parse
@@ -16,32 +18,20 @@ jobs:
           label_marker_start: '>>'
           label_marker_end: '<<'
 
-      - name: Checkout repo
-        uses: actions/checkout@v3
+      - name: set environment output
+        id: environ
+        run: echo "ambiente_exec=${{ fromJson(steps.parse.outputs.payload)['Ambiente execucao'] }}" >> "$GITHUB_OUTPUT"
 
-      - name: Update yaml
-        id: update-yaml
-        uses: ./
-        with:
-          marks: ${{ fromJson(steps.parse.outputs.payload)['Marks'] }}
-          ambiente: ${{ fromJson(steps.parse.outputs.payload)['Ambiente execucao'] }}
-
-      - name: Atualizar repo
-        env:
-          Ambiente_Execucao: ${{ fromJson(steps.parse.outputs.payload)['Ambiente execucao'] }}
-        run: |
-          git config --global user.email "leosaglia@hotmail.com"
-          git config --global user.name "Leo Saglia"
-          git add .
-          git commit -m "[$Ambiente_Execucao]"
-          git checkout -b test_$Ambiente_Execucao
-          git push --set-upstream origin test_$Ambiente_Execucao
-    
   auto-closing-issue:
     name: Auto Closing Issue
     runs-on: ubuntu-latest
     needs: [form-to-json]
     steps:
+      - name: test output
+        env:
+          ambiente_exec: ${{ needs.form-to-json.outputs.ambiente_exec }}
+        run: echo $ambiente_exec
+
       - name: Close Issue
         id: parse
         uses: peter-evans/close-issue@v1
