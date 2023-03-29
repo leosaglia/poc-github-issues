@@ -12,7 +12,8 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: | 
-            return { "id_taac": "testscript" }
+            return { "id_taac": "testscript" }.id_taac
+          result-encoding: string
       
       - name: test output
         run: echo "${{ steps.form-to-json.outputs.result }}"
