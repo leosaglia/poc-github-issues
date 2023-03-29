@@ -8,15 +8,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Script js
-        id: script-js
         uses: actions/github-script@v6
+        id: set-result
         with:
-          script: | 
-            return { "id_taac": "testscript" }.id_taac
+          script: return "Hello!"
           result-encoding: string
       
-      - name: test output
-        run: echo "${{ steps.form-to-json.outputs.result }}"
+      - name: Get result
+        run: echo "${{steps.set-result.outputs.result}}""
 
   #form-to-json:
   #  name: Convert Form Issue to JSON
