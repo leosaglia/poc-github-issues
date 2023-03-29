@@ -15,7 +15,7 @@ jobs:
             return { "id_taac": "testscript" }
       
       - name: test output
-        run: echo ${{ steps.form-to-json.outputs.result }}
+        run: echo "${{ steps.form-to-json.outputs.result }}"
 
   #form-to-json:
   #  name: Convert Form Issue to JSON
