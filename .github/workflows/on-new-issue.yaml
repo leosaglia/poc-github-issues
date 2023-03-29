@@ -17,7 +17,7 @@ jobs:
           result-encoding: string
       
       - name: Get result
-        run: echo "${{steps.set-result.outputs.result}}"
+        run: echo "{'id_taac':'${{steps.set-result.outputs.result}}'}"
 
   #form-to-json:
   #  name: Convert Form Issue to JSON
